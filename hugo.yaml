@@ -1,6 +1,6 @@
 baseURL: "https://julienp.netlify.app"
 languageCode: en-us
-title: JulienPourcel
+title: Julien Pourcel
 theme: PaperMod
 
 enableInlineShortcodes: true
