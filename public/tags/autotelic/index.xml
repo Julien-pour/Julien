@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Autotelic on Julien Pourcel</title>
+    <link>//localhost:1313/tags/autotelic/</link>
+    <description>Recent content in Autotelic on Julien Pourcel</description>
+    <image>
+      <title>Julien Pourcel</title>
+      <url>//localhost:1313/images/papermod-cover.png</url>
+      <link>//localhost:1313/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.147.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 May 2025 14:48:49 +0200</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/autotelic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generating a Diversity of Challenging Programming Puzzles with Autotelic Generative Models</title>
+      <link>//localhost:1313/posts/aces/</link>
+      <pubDate>Wed, 14 May 2025 14:48:49 +0200</pubDate>
+      <guid>//localhost:1313/posts/aces/</guid>
+      <description>Article about ACES paper</description>
+    </item>
+  </channel>
+</rss>

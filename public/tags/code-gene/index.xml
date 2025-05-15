@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Code-Gene on Julien Pourcel</title>
+    <link>//localhost:1313/tags/code-gene/</link>
+    <description>Recent content in Code-Gene on Julien Pourcel</description>
+    <image>
+      <title>Julien Pourcel</title>
+      <url>//localhost:1313/images/papermod-cover.png</url>
+      <link>//localhost:1313/images/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.147.3</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 May 2025 14:49:04 +0200</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/code-gene/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Self-Improving Language Models for Evolutionary Program Synthesis:A Case Study on ARC-AGI</title>
+      <link>//localhost:1313/posts/soar/</link>
+      <pubDate>Wed, 14 May 2025 14:49:04 +0200</pubDate>
+      <guid>//localhost:1313/posts/soar/</guid>
+      <description>Article about SOAR paper</description>
+    </item>
+  </channel>
+</rss>
