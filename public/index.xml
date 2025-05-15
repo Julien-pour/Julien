@@ -2,51 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Julien Pourcel</title>
-    <link>//localhost:1313/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Julien Pourcel</description>
     <image>
       <title>Julien Pourcel</title>
-      <url>//localhost:1313/images/papermod-cover.png</url>
-      <link>//localhost:1313/images/papermod-cover.png</link>
+      <url>http://localhost:1313/images/papermod-cover.png</url>
+      <link>http://localhost:1313/images/papermod-cover.png</link>
     </image>
     <generator>Hugo -- 0.147.3</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 14 May 2025 14:49:04 +0200</lastBuildDate>
-    <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Self-Improving Language Models for Evolutionary Program Synthesis: A Case Study on ARC-AGI</title>
-      <link>//localhost:1313/posts/soar/</link>
+      <link>http://localhost:1313/posts/soar/</link>
       <pubDate>Wed, 14 May 2025 14:49:04 +0200</pubDate>
-      <guid>//localhost:1313/posts/soar/</guid>
+      <guid>http://localhost:1313/posts/soar/</guid>
       <description>Article about SOAR paper</description>
     </item>
     <item>
       <title>Generating a Diversity of Challenging Programming Puzzles with Autotelic Generative Models</title>
-      <link>//localhost:1313/posts/aces/</link>
+      <link>http://localhost:1313/posts/aces/</link>
       <pubDate>Wed, 14 May 2025 14:48:49 +0200</pubDate>
-      <guid>//localhost:1313/posts/aces/</guid>
+      <guid>http://localhost:1313/posts/aces/</guid>
       <description>Article about ACES paper</description>
-    </item>
-    <item>
-      <title>Math examples</title>
-      <link>//localhost:1313/posts/test_math/</link>
-      <pubDate>Wed, 24 Jan 2024 18:09:49 -0800</pubDate>
-      <guid>//localhost:1313/posts/test_math/</guid>
-      <description>&lt;p&gt;This is an inline (a^&lt;em&gt;=x-b^&lt;/em&gt;) equation.&lt;/p&gt;
-&lt;p&gt;a $a$
-$$a=1$$
-These are block equations:&lt;/p&gt;
-&lt;p&gt;[a^&lt;em&gt;=x-b^&lt;/em&gt;]&lt;/p&gt;
-&lt;p&gt;[ a^&lt;em&gt;=x-b^&lt;/em&gt; ]&lt;/p&gt;
-&lt;p&gt;[
-a^&lt;em&gt;=x-b^&lt;/em&gt;
-]&lt;/p&gt;
-&lt;p&gt;These are also block equations:&lt;/p&gt;
-&lt;p&gt;$$a^&lt;em&gt;=x-b^&lt;/em&gt;$$&lt;/p&gt;
-&lt;p&gt;$$a^*=x-b^4$$&lt;/p&gt;
-&lt;p&gt;$$
-a^&lt;em&gt;=x-b^&lt;/em&gt;
-$$&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
