@@ -84,12 +84,12 @@ params:
   homeInfoParams:
     Title: "About me"
     Content: >
-      👋 Hi, I'm Julien Pourcel, a PhD student at INRIA Bordeaux ([`FLOWERS team`](https://flowers.inria.fr/)) supervised by Pierre-Yves Oudeyer , specializing in LLM4Code research.
+      👋 Hi, I'm Julien Pourcel, a PhD student at INRIA Bordeaux ([`FLOWERS team`](https://flowers.inria.fr/)) supervised by [`Pierre-Yves Oudeyer`](http://www.pyoudeyer.com/), working on LLM for code.
       Previously, I earned my Master's degree from ENS Paris-Saclay, graduating with highest honors.
-      I also did some internships at UC Berkeley and LEAD-CNRS.
+      I also did internships at UC Berkeley and LEAD-CNRS.
 
 
-      I am passionate about the intersection of AI and programming, particularly in the context of large language models (LLMs) and their applications in code generation, understanding and reasoning.
+      I am passionate about the intersection of AI and programming, particularly in the context of large language models (LLMs) and their applications in Program synthesis and reasoning.
            
       <br/> 
 
@@ -98,15 +98,15 @@ params:
  
       My research interests include:
 
-      - intrinsic motivation (autotelic agents)
+      - intrinsic motivation ([`autotelic agents`](https://www.jair.org/index.php/jair/article/view/13554))
 
-      - Code generation
+      - LLM
 
-      - Code understanding
+      - Code generation / Program synthesis
 
       - Reinforcement learning
 
-      - self-improvement agent
+      - self-improving agent
 
   socialIcons:
     - name: github
