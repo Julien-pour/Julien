@@ -14,81 +14,51 @@ cover:
     caption: SOAR architecture
 ---
 
+## Self-Improving Language Models for Evolutionary Program Synthesis:\\A Case Study on ARC-AGI
 
-# Self-Improving Language Models: A New Frontier in Program Synthesis
+Large Language Models (LLMs) have become incredibly powerful, but they often hit a wall when faced with truly complex reasoning tasks that require discovering a solution from scratch. Simply throwing more computing power or using a bigger model often yields diminishing returns. But what if a model could learn from its own experience, getting smarter with every attempt?
 
-Program synthesis is like teaching a computer to write its own code. Instead of giving it step-by-step instructions, you provide examples of what you want, and it figures out how to make it happen. It’s a powerful concept with huge potential, but it’s also incredibly challenging—especially for complex tasks like those in the Abstraction and Reasoning Corpus (ARC) benchmark. ARC puzzles test an AI’s ability to reason by asking it to transform colored grids based on just a few examples, and even the best language models struggle to crack them in one shot.
+We introduce a framework called **SOAR (Self-improving Operators for Automated program Refinements)** that does just that. By creating a "virtuous cycle" of evolutionary search and learning, SOAR enables AI models to bootstrap their own capabilities and solve problems previously beyond their reach. we tested SOAR on the Abstraction and Reasoning Corpus (ARC-AGI-1), a notoriously difficult benchmark designed to challenge an AI's core reasoning abilities. We show that using SOAR with only open weight LLM, we can significantly outperforming much larger closed source LLMs.
 
-That’s where SOAR comes in—a groundbreaking framework called **Self-improving Operators for Automated program Refinements**. Introduced in the paper *"Self-Improving Language Models for Evolutionary Program Synthesis: A Case Study on ARC-AGI"*, SOAR helps language models get better at generating and refining programs by learning from their own attempts. This blog post dives into what SOAR is, how it works, and why it’s a game-changer for program synthesis.
+### The Challenge: The AI Reasoning Wall
 
-## What’s the Big Deal with Program Synthesis?
+Program synthesis is the task of automatically generating a computer program that meets a user's specifications. For simple tasks, an LLM can often produce a working solution in a single attempt. However, for complex problems like those in the ARC benchmark, this is nearly impossible.
 
-Imagine you want to automate a task but don’t know how to code it yourself. With program synthesis, you can show the computer a few examples—like “input this, output that”—and it will generate a program to do the job. In ARC, these examples are visual: input grids of colored cells and their corresponding output grids. The AI has to deduce the transformation rule and write a program to apply it.
+The ARC benchmark consists of visual puzzles where you must figure out the underlying logical transformation from a few input-output examples and then apply it to a new test input. These tasks require concepts like object permanence, arithmetic, and spatial reasoning, making them surprisingly difficult for current AI. For instance, even powerful models like GPT-4.1 and Claude-4-Sonnet could only solve 8% and 20.75% of the test tasks, respectively, in a single shot.
 
-This is no small feat. ARC tasks often involve abstract reasoning—think pattern recognition, spatial relationships, or even basic physics—making them easy for humans but tough for machines. Traditional methods and even cutting-edge language models hit a wall here, solving only a tiny fraction of these puzzles without extra help.
+While search-based methods, which generate and test many potential solutions, improve performance, they are ultimately limited by the fixed capabilities of the base LLM. This creates a performance plateau that can't be overcome by simply running more searches.
 
-## Why Current Models Fall Short
+### SOAR's Solution: A Virtuous Cycle of Self-Improvement
 
-Even top-tier models like GPT-4o (4.75% success), Gemini-1.5-Pro (2.75%), or Claude-3.5-Sonnet (11.25%) falter on ARC tasks when asked to solve them in a single attempt. Smaller open-source models, like Qwen-2.5-Coder-7B, fare even worse at 1%. Why? These tasks demand reasoning beyond what a one-shot guess can handle. But give these models a chance to explore multiple solutions, and things start to improve—hinting at the potential for a smarter approach.
+![alt](/img/SOAR/soar_fig.png) 
 
-## SOAR: A Self-Improving Framework
+SOAR overcomes this limitation by making the LLM itself part of a learning loop. The system alternates between two key phases:
+
+1.  **Evolutionary Search (Sample & Refine):** SOAR uses an LLM to generate an initial pool of thousands of candidate programs (the "sampling" step). It then tests these programs and uses the LLM again to intelligently modify or "refine" the most promising ones based on their performance.
+
+2.  **Learning from Hindsight:** SOAR takes all the programs generated during the search phase—including both successes and failures—and uses them as training data. The key insight is that any failed program is simply a *correct* program for a *different* task. By "relabeling" these failed attempts as correct solutions for the synthetic tasks they inadvertently solve, SOAR creates a diverse dataset to learn from.
+
+This process creates a powerful feedback loop: the fine-tuned model becomes better at sampling and refining, which leads to a more effective search in the next iteration, which in turn generates even better training data. And unlike previous approaches that rely on human-engineered domain-specific languages or human-generated solutions, SOAR learns to synthesize programs in Python solely from its own synthesis attempts, encompassing both successes and failures.
+
+### Breaking the Scaling Plateau
+
+The improvements driven by SOAR are dramatic. We tested our framework using multiple model (Qwen-2.5-Coder-(7/14/32B), Qwen-2.5-72B and Mistral-Large-2), SOAR broke through performance ceilings that limit methods based on fixed models.
+
+* **Massive Performance Gains:** After several iterations, SOAR nearly doubled the search performance for all tested models. By combining the solutions from all its models, SOAR ultimately solved **80% of the public ARC train set** and **52% of the public ARC test set**, a state-of-the-art result for methods using open-source LLMs without any hand-crafted data.
+* **Smaller Models Outperform Giants:** SOAR's self-improvement allows smaller, more efficient models to punch far above their weight. After its training iterations, SOAR's 14-billion-parameter model achieved 42.75% accuracy, outperforming the one-shot performance of closed-source models like GPT-4.1 and the 33% score of 03-mini.
+* **Learning on the Job:** SOAR features a "test-time training" mechanism that allows it to continue improving on new problems even without access to ground-truth solutions.
+* **Synergy in Learning:** We found that jointly training the model on both the sampling and refinement tasks yielded the best results, indicating a positive synergy where learning to generate programs helps with refining them, and vice-versa.
 
 
+![alt](/img/SOAR/scaling.jpg) 
+**Figure 1.** Performance plateaus with increasing model size when using fixed sampling and refinement capabilities (**SOAR (base-model)**). In contrast, **SOAR** progressively lifts the scaling curves across iterations, enabling smaller models to match or outperform much larger ones.  
+*Note:* Only the 7 B, 14 B, and 32 B models are from the same family (*Qwen-2.5-Coder*); 72 B is from the *Qwen-2.5* family, and 123 B is *Mistral-large-2407*. One-shot results for closed-source LLMs are shown (sampled once).
 
-![alt](/img/SOAR/soar_fig.jpg) 
+### Why This Matters for the Future of AI
 
-<!-- <img src="/img/SOAR/soar_fig.jpg" alt="alt" style="width:100%;" /> -->
+SOAR demonstrates that a path to more capable AI may not lie just in building ever-larger models, but in creating systems that can learn and improve autonomously from their own experience.
+
+By overcoming the performance plateaus associated with model size and compute budget, SOAR presents a new paradigm for AI development. Its framework could potentially serve as a "drop-in upgrade" for other advanced framework that currently uses a frozen LM (e.g., FunSearch, AlphaEvolve, ...), enabling them to continually learn from their own search traces.
 
 
-<!-- <img style="position: absolute; top:2000px; right: 32px" src="/img/SOAR/soar_fig.jpg" alt="peace dove" /> -->
-
-
-SOAR flips the script by turning language models into self-learners. It’s built on a two-phase loop that keeps getting better with each cycle:
-
-1. **Search Phase**: The model generates candidate programs and refines them using feedback from running those programs against the training examples.
-2. **Learning Phase**: It takes the data from those search attempts—both successes and failures—and fine-tunes itself to improve for the next round.
-
-This creates a virtuous cycle: a sharper model leads to smarter searches, which produce richer data for further improvement. Let’s break it down.
-
-### The Search Phase: Exploring the Solution Space
-
-In the search phase, SOAR starts by having the language model generate a pool of possible programs—say, 3,000 candidates. These are written in Python, not some restrictive custom language, giving the model freedom to experiment. Then, it refines these programs iteratively, using execution feedback to tweak them. Think of it like navigating a maze: the model tries different paths, learns from dead ends, and hones in on the exit.
-
-To balance exploring new ideas and refining promising ones, SOAR uses a technique called REX (a bandit algorithm) and caps it off with majority voting to pick the best solution from the final pool of 6,000 candidates (half from generation, half from refinement).
-
-### The Learning Phase: Turning Mistakes into Lessons
-
-Here’s where SOAR shines. Instead of discarding failed attempts, it learns from them. For **generation**, it uses *hindsight relabeling*: if a program didn’t solve the original task, it’s still a valid solution for the output it *did* produce. This trick turns every attempt into a training example, creating a massive dataset—up to 2.4 million problem-solution pairs from ARC’s 400 training tasks.
-
-For **refinement**, SOAR collects examples where an incorrect program was successfully fixed and uses those to teach the model how to polish its work. After fine-tuning, the model returns to the search phase smarter than before.
-
-### Iterative Improvement: A Virtuous Cycle
-
-SOAR doesn’t stop at one pass. Each iteration builds on the last, compounding gains. After four rounds, performance jumps by 13-16% across different model sizes. And it’s not just for training—it adapts to new tasks at test time, improving even without seeing the answers, thanks to a modified self-improvement loop.
-
-## Results That Speak for Themselves
-
-The numbers tell the story. On ARC’s test set, base Qwen-2.5-Coder models (7B, 14B, 32B) solve 8-21% of tasks with search alone. After four iterations of SOAR, this leaps to 24% (7B), 31% (14B), and 34% (32B). Combine outputs from all three sizes, and SOAR hits **41.25%**—a new state-of-the-art for program synthesis with open-source models on ARC.
-
-Compare that to Claude-3.5-Sonnet’s 11.25% in one shot, and it’s clear: SOAR lets smaller models punch above their weight through self-improvement.
-
-| Model               | 1-Shot (%) | Search-6k (%) | SOAR After 4 Iterations (%) |
-|---------------------|------------|---------------|-----------------------------|
-| Claude-3.5-Sonnet   | 11.25      | -             | -                           |
-| Qwen-2.5-Coder-7B   | 1.00       | 8.25          | 24.00                       |
-| Qwen-2.5-Coder-14B  | 1.50       | 18.00         | 31.00                       |
-| Qwen-2.5-Coder-32B  | 2.25       | 21.13         | 34.00                       |
-| Combined (SOAR)     | -          | -             | 41.25                       |
-
-## Why This Matters
-
-SOAR proves AI can bootstrap its own growth without mountains of human-labeled data. By learning from its own search experiences, it turns failures into stepping stones, paving the way for systems that adapt and improve on the fly. Imagine AI assistants mastering new skills as they go, or solvers tackling novel problems by building on past efforts—SOAR makes that future feel closer.
-
-## What’s Next?
-
-The paper hints at exciting possibilities: scaling SOAR to bigger models or more iterations, testing it on other benchmarks, or blending it with techniques like reinforcement learning. Could it crack even tougher reasoning tasks? Time will tell.
-
-## Conclusion
-
-SOAR is a leap forward for program synthesis. By weaving language models into a self-improving loop, it transforms static tools into dynamic learners, achieving impressive results on ARC and setting a new benchmark for open-source AI. More than that, it’s a blueprint for building systems that grow smarter over time, pushing us closer to AI that truly reasons and adapts like we do.
-
+Want to dig deeper? Check out the full paper and explore the data, model and the code.
