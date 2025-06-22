@@ -14,7 +14,7 @@ cover:
     caption: SOAR architecture
 ---
 
-## Self-Improving Language Models for Evolutionary Program Synthesis:\\A Case Study on ARC-AGI
+## Self-Improving Language Models for Evolutionary Program Synthesis: A Case Study on ARC-AGI
 
 Large Language Models (LLMs) have become incredibly powerful, but they often hit a wall when faced with truly complex reasoning tasks that require discovering a solution from scratch. Simply throwing more computing power or using a bigger model often yields diminishing returns. But what if a model could learn from its own experience, getting smarter with every attempt?
 
@@ -52,7 +52,7 @@ The improvements driven by SOAR are dramatic. We tested our framework using mult
 
 ![alt](/img/SOAR/scaling.jpg) 
 **Figure 1.** Performance plateaus with increasing model size when using fixed sampling and refinement capabilities (**SOAR (base-model)**). In contrast, **SOAR** progressively lifts the scaling curves across iterations, enabling smaller models to match or outperform much larger ones.  
-*Note:* Only the 7 B, 14 B, and 32 B models are from the same family (*Qwen-2.5-Coder*); 72 B is from the *Qwen-2.5* family, and 123 B is *Mistral-large-2407*. One-shot results for closed-source LLMs are shown (sampled once).
+*Note:* Only the 7B, 14B, and 32B models are from the same family (*Qwen-2.5-Coder*); 72B is from the *Qwen-2.5* family, and 123B is *Mistral-large-2407*. One-shot results for closed-source LLMs are shown (sampled once).
 
 ### Why This Matters for the Future of AI
 
@@ -61,4 +61,4 @@ SOAR demonstrates that a path to more capable AI may not lie just in building ev
 By overcoming the performance plateaus associated with model size and compute budget, SOAR presents a new paradigm for AI development. Its framework could potentially serve as a "drop-in upgrade" for other advanced framework that currently uses a frozen LM (e.g., FunSearch, AlphaEvolve, ...), enabling them to continually learn from their own search traces.
 
 
-Want to dig deeper? Check out the full paper and explore the data, model and the code.
+Want to dig deeper? Check out the full paper and explore the [data](https://huggingface.co/collections/julien31/soar-arc-6856d27681fce01d9af4c4a3), [model](https://huggingface.co/collections/julien31/soar-arc-6856d27681fce01d9af4c4a3), and the [code](https://julienp.netlify.app/posts/soar/).
