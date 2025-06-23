@@ -54,11 +54,24 @@ The improvements driven by SOAR are dramatic. We tested our framework using mult
 **Figure 1.** Performance plateaus with increasing model size when using fixed sampling and refinement capabilities (**SOAR (base-model)**). In contrast, **SOAR** progressively lifts the scaling curves across iterations, enabling smaller models to match or outperform much larger ones.  
 *Note:* Only the 7B, 14B, and 32B models are from the same family (*Qwen-2.5-Coder*); 72B is from the *Qwen-2.5* family, and 123B is *Mistral-large-2407*. One-shot results for closed-source LLMs are shown (sampled once).
 
-### Why This Matters for the Future of AI
+### Why This Matters
 
 SOAR demonstrates that a path to more capable AI may not lie just in building ever-larger models, but in creating systems that can learn and improve autonomously from their own experience.
 
 By overcoming the performance plateaus associated with model size and compute budget, SOAR presents a new paradigm for AI development. Its framework could potentially serve as a "drop-in upgrade" for other advanced framework that currently uses a frozen LM (e.g., FunSearch, AlphaEvolve, ...), enabling them to continually learn from their own search traces.
 
 
-Want to dig deeper? Check out the full paper and explore the [data](https://huggingface.co/collections/julien31/soar-arc-6856d27681fce01d9af4c4a3), [model](https://huggingface.co/collections/julien31/soar-arc-6856d27681fce01d9af4c4a3), and the [code](https://julienp.netlify.app/posts/soar/).
+### Want to dig deeper?
+Check out the full paper and explore the data as we have released a dataset containing 5 million ARC solutions. For solutions that successfully solve an original ARC task, we deduplicate entries by their code to ensure uniqueness. For solutions that correspond to new synthetic tasks generated via hindsight relabeling, we deduplicate based on their output results. This approach ensures a diverse and high-quality dataset for further research and development.
+
+- [data](https://huggingface.co/datasets/julien31/soar_arc_train_5M)
+
+- [code](https://github.com/flowersteam/SOAR)
+
+Model:
+- [Soar-qwen-7b](https://huggingface.co/julien31/Soar-qwen-7b)
+- [Soar-qwen-14b](https://huggingface.co/julien31/Soar-qwen-14b)
+- [Soar-qwen-32b](https://huggingface.co/julien31/Soar-qwen-32b)
+- [Soar-qwen-72b](https://huggingface.co/julien31/Soar-qwen-72b)
+- [Soar-mistral-123b](https://huggingface.co/julien31/Soar-mistral-123b)
+
