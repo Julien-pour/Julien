@@ -16,6 +16,10 @@ cover:
 
 ## Self-Improving Language Models for Evolutionary Program Synthesis: A Case Study on ARC-AGI
 
+<p align="center">
+          🤗 <a href="https://huggingface.co/collections/julien31/soar-arc-6856d27681fce01d9af4c4a3">Hugging Face (data and model)</a>&nbsp&nbsp | &nbsp&nbsp 📑 <a href="https://icml.cc/virtual/2025/poster/43499">Paper</a> &nbsp&nbsp | &nbsp&nbsp 📑 <a href="https://julienp.netlify.app/posts/soar/">Blog</a>
+</p>
+
 Large Language Models (LLMs) have become incredibly powerful, but they often hit a wall when faced with truly complex reasoning tasks that require discovering a solution from scratch. Simply throwing more computing power or using a bigger model often yields diminishing returns. But what if a model could learn from its own experience, getting smarter with every attempt?
 
 We introduce a framework called **SOAR (Self-improving Operators for Automated program Refinements)** that does just that. By creating a "virtuous cycle" of evolutionary search and learning, SOAR enables AI models to bootstrap their own capabilities and solve problems previously beyond their reach. we tested SOAR on the Abstraction and Reasoning Corpus (ARC-AGI-1), a notoriously difficult benchmark designed to challenge an AI's core reasoning abilities. We show that using SOAR with only open weight LLM, we can significantly outperforming much larger closed source LLMs.
@@ -75,3 +79,8 @@ Model:
 - [Soar-qwen-72b](https://huggingface.co/julien31/Soar-qwen-72b)
 - [Soar-mistral-123b](https://huggingface.co/julien31/Soar-mistral-123b)
 
+Paper:
+> [**Self-Improving Language Models for Evolutionary Program Synthesis: A Case Study on ARC-AGI**](https://icml.cc/virtual/2025/poster/43499)
+>
+> Julien Pourcel, Cédric Colas, Pierre-Yves Oudeyer.
+> *Proceedings of the 42nd International Conference on Machine Learning (ICML), 2025.*
